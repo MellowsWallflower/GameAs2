@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameMangerScript : MonoBehaviour
 {
@@ -20,4 +21,10 @@ public class gameMangerScript : MonoBehaviour
     {
         gameOverUI.SetActive(true);
     }
+
+    public void restart()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
