@@ -11,12 +11,19 @@ public class CollectibleItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Collect();
+            Collect2();
         }
     }
 
     private void Collect()
     {
         ScoreManager.Instance.IncreaseScore(scoreValue);
+        gameObject.SetActive(false);
+    }
+
+    private void Collect2()
+    {
+        scoreGameOverScreen.Instance.IncreaseScore(scoreValue);
         gameObject.SetActive(false);
     }
 }
