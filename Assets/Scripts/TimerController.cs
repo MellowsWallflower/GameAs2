@@ -7,6 +7,8 @@ public class TimerController : MonoBehaviour
 {
    public float initialTime = 120f;
     private float currentTime;
+    public gameMangerScript gameManager;
+    private bool isReached;
 
     public TextMeshProUGUI timerText;
 
@@ -23,8 +25,10 @@ public class TimerController : MonoBehaviour
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
         }
-        else
+        else if(currentTime <= 0)
         {
+            isReached = true;
+            gameManager.gameOver();
             Debug.Log("Time's up!");
         }
     }
