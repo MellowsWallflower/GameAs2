@@ -8,36 +8,53 @@ public class TimerController : MonoBehaviour
    public float initialTime = 120f;
     private float currentTime;
     public gameMangerScript gameManager;
-    private bool isReached;
-
+    private bool playerIsActive = true;
     public TextMeshProUGUI timerText;
 
     void Start()
     {
+        ExitTrigger.isReached = false;
         currentTime = initialTime;
         UpdateTimerDisplay();
     }
 
     void Update()
     {
-        if (currentTime > 0)
+        if (currentTime > 0 && ExitTrigger.isReached == false)
         {
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
         }
-        else if(currentTime <= 0)
+      
+        else if(currentTime > 0 && ExitTrigger.isReached == true)
         {
-            isReached = true;
             gameManager.gameOver();
+            Debug.Log("You Win");
+        }
+        else if (currentTime <= 0 && ExitTrigger.isReached == false)
+        {
+            currentTime = 0;
+            gameManager.gameOver();
+            // Time is up, implement your game-over logic here
             Debug.Log("Time's up!");
+            
         }
     }
 
     void UpdateTimerDisplay()
     {
-        float minutes = Mathf.Floor(currentTime / 60);
-        float seconds = Mathf.RoundToInt(currentTime % 60);
+        if(playerIsActive)
+        {
+            if (currentTime >= 0)
+            {
+                float minutes = Mathf.Floor(currentTime / 60);
+                float seconds = Mathf.RoundToInt(currentTime % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+        }
+        
     }
+
+
 }

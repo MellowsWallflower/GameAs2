@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExitTrigger : MonoBehaviour
 {
     public gameMangerScript gameManager;
-    private bool isReached;
+    static public bool isReached;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player" && !isReached)
