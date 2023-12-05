@@ -8,7 +8,6 @@ public class TimeGameOverScreen : MonoBehaviour
     public float initialTime = 120f;
     private float currentTime;
     private bool playerIsActive = true;
-    // Start is called before the first frame update
     public TextMeshProUGUI timerText;
 
     void Start()
