@@ -32,8 +32,6 @@ public class TimeGameOverScreen : MonoBehaviour
         }
         else if (currentTime <= 0 && ExitTrigger.isReached == false)
         {
-            
-            // Time is up, implement your game-over logic here
             Debug.Log("Time's up!");
         }
     }

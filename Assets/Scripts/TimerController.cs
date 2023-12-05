@@ -35,7 +35,6 @@ public class TimerController : MonoBehaviour
         {
             currentTime = 0;
             gameManager.gameOver();
-            // Time is up, implement your game-over logic here
             Debug.Log("Time's up!");
             
         }
